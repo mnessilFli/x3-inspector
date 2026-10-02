@@ -1,0 +1,50 @@
+{
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8642
+  },
+  "security": {
+    "allowedExtensionIds": [],
+    "maxRowsDefault": 500,
+    "maxRowsLimit": 5000,
+    "queryTimeoutMs": 30000,
+    "logSql": true
+  },
+  "logging": {
+    "level": "info",
+    "file": "../logs/companion.log"
+  },
+  "environments": [
+    {
+      "id": "client-preprod",
+      "name": "Client PREPROD",
+      "kind": "PREPROD",
+      "language": "FRA",
+      "metadata": { "provider": "database" },
+      "database": {
+        "type": "mssql",
+        "host": "sqlserver.client.local",
+        "port": 1433,
+        "database": "x3erpv12",
+        "schema": "SEED",
+        "user": "x3_inspector_ro",
+        "passwordEnv": "X3I_CLIENT_PREPROD_SQL_PASSWORD",
+        "encrypt": false,
+        "trustServerCertificate": true,
+        "isolation": "read-uncommitted"
+      }
+    },
+    {
+      "id": "client-recette",
+      "name": "Client RECETTE (profil x3-connect)",
+      "kind": "TEST",
+      "x3ConnectProfile": "C:/chemin/vers/projet-client/.x3/client-recette.env"
+    },
+    {
+      "id": "client-offline",
+      "name": "Client (hors ligne, x3-context)",
+      "kind": "DEV",
+      "metadata": { "provider": "x3-context", "path": "C:/chemin/vers/projet-client/x3-context/client-recette" }
+    }
+  ]
+}

@@ -1,0 +1,628 @@
+/* Look inspired by Salesforce Inspector Reloaded: navy header, white rounded cards, pill buttons. */
+:root {
+  --navy: #032d60;
+  --navy-2: #0b3a75;
+  --blue: #0176d3;
+  --blue-dark: #014486;
+  --blue-light: #eef4ff;
+  --bg: #f3f3f3;
+  --card: #ffffff;
+  --border: #dddbda;
+  --text: #181818;
+  --muted: #5c5c5c;
+  --green: #2e844a;
+  --green-bg: #e8f5ec;
+  --orange: #a96404;
+  --orange-bg: #fef1de;
+  --red: #ba0517;
+  --red-bg: #fde8e8;
+  --grey-bg: #ecebea;
+  --radius: 12px;
+  --font: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --mono: Consolas, 'Cascadia Mono', Menlo, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.4 var(--font);
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+code,
+.mono {
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+/* ---------------------------------------------------------------- header */
+.header {
+  background: var(--navy);
+  color: #fff;
+  padding: 8px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.header .title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.header select {
+  background: #fff;
+  color: var(--text);
+  border-radius: 6px;
+  border: none;
+  padding: 3px 6px;
+  max-width: 170px;
+}
+.header .dbinfo {
+  width: 100%;
+  font-size: 11px;
+  opacity: 0.85;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #9e9e9e;
+}
+.dot.ok {
+  background: #45c65a;
+}
+.dot.error {
+  background: #fe5c4c;
+}
+
+.pill {
+  display: inline-block;
+  border-radius: 10px;
+  padding: 1px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.pill.readonly {
+  background: #fff;
+  color: var(--navy);
+}
+.env-PROD {
+  background: var(--red);
+  color: #fff;
+}
+.env-PREPROD {
+  background: #dd7a01;
+  color: #fff;
+}
+.env-TEST {
+  background: var(--green);
+  color: #fff;
+}
+.env-DEV {
+  background: var(--blue);
+  color: #fff;
+}
+.prod-banner {
+  background: var(--red);
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  padding: 4px;
+  position: sticky;
+  top: 0;
+  z-index: 19;
+  letter-spacing: 0.04em;
+}
+
+/* ---------------------------------------------------------------- navigation */
+.nav {
+  display: flex;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+.nav button {
+  flex: 1;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 8px 2px;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--muted);
+  cursor: pointer;
+}
+.nav button.active {
+  color: var(--blue);
+  border-bottom-color: var(--blue);
+}
+.subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 8px 10px 0;
+}
+.subnav button {
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 14px;
+  padding: 3px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--muted);
+}
+.subnav button.active {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--blue-light);
+}
+
+main.content {
+  padding: 8px 10px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* ---------------------------------------------------------------- cards */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  min-width: 0;
+}
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.card-head h2 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  margin-right: auto;
+}
+.card h3 {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 10px 0 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+
+/* ---------------------------------------------------------------- buttons */
+.btn {
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  background: #fff;
+  border-radius: 16px;
+  padding: 4px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.btn:hover:not(:disabled) {
+  background: var(--blue-light);
+}
+.btn.primary {
+  background: var(--blue);
+  color: #fff;
+}
+.btn.primary:hover:not(:disabled) {
+  background: var(--blue-dark);
+}
+.btn.danger {
+  border-color: var(--red);
+  color: var(--red);
+}
+.btn.small {
+  padding: 1px 8px;
+  font-size: 11px;
+}
+.btn.active {
+  background: var(--blue);
+  color: #fff;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+.link {
+  background: none;
+  border: none;
+  color: var(--blue);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+}
+.link:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------- forms */
+.input,
+select.input,
+textarea.input {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 8px;
+  background: #fff;
+  width: 100%;
+  min-width: 0;
+}
+.input:focus {
+  outline: 2px solid var(--blue-light);
+  border-color: var(--blue);
+}
+textarea.input {
+  font-family: var(--mono);
+  font-size: 12px;
+  resize: vertical;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 6px 8px;
+  align-items: center;
+}
+.form-grid label {
+  color: var(--muted);
+  font-size: 12px;
+}
+.inline {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+}
+.inline > .input {
+  flex: 1;
+}
+.checkbox {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------- info rows */
+.info {
+  display: grid;
+  grid-template-columns: minmax(90px, 38%) 1fr;
+  gap: 2px 8px;
+  font-size: 12px;
+}
+.info .k {
+  color: var(--muted);
+  padding: 3px 0;
+}
+.info .v {
+  padding: 3px 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.info .v .val {
+  font-family: var(--mono);
+  font-weight: 600;
+}
+.info .v .unknown {
+  color: #939393;
+  font-style: italic;
+}
+.src {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+}
+.sep {
+  grid-column: 1 / -1;
+  border-top: 1px solid #f0f0f0;
+  margin: 2px 0;
+}
+
+.badge {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 0 5px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 4px;
+  vertical-align: 1px;
+  letter-spacing: 0.03em;
+}
+.badge.EXACT {
+  background: var(--green-bg);
+  color: var(--green);
+}
+.badge.METADATA {
+  background: var(--blue-light);
+  color: var(--blue-dark);
+}
+.badge.INFERRED {
+  background: var(--orange-bg);
+  color: var(--orange);
+}
+.badge.UNKNOWN {
+  background: var(--grey-bg);
+  color: var(--muted);
+}
+.custom-flag {
+  color: var(--orange);
+  font-weight: 700;
+}
+.custom-flag.confirmed {
+  color: var(--red);
+}
+
+/* ---------------------------------------------------------------- messages */
+.msg {
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+.msg.error {
+  background: var(--red-bg);
+  color: var(--red);
+}
+.msg.warn {
+  background: var(--orange-bg);
+  color: #7a4b04;
+}
+.msg.info {
+  background: var(--blue-light);
+  color: var(--blue-dark);
+}
+.msg.ok {
+  background: var(--green-bg);
+  color: var(--green);
+}
+.msg ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+.muted {
+  color: var(--muted);
+}
+.small {
+  font-size: 11px;
+}
+.empty {
+  color: var(--muted);
+  text-align: center;
+  padding: 16px 8px;
+}
+
+/* ---------------------------------------------------------------- grids */
+.grid-wrap {
+  overflow: auto;
+  max-height: 420px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+table.grid {
+  border-collapse: collapse;
+  font-size: 12px;
+  width: max-content;
+  min-width: 100%;
+}
+table.grid th {
+  position: sticky;
+  top: 0;
+  background: #fafaf9;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  font-weight: 600;
+  padding: 4px 8px;
+  white-space: nowrap;
+  z-index: 1;
+}
+table.grid td {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 3px 8px;
+  white-space: nowrap;
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+}
+table.grid tr:hover td {
+  background: #f7faff;
+}
+table.grid td.copyable {
+  cursor: copy;
+}
+table.grid td.null {
+  color: #b0adab;
+  font-style: italic;
+}
+table.grid td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+table.grid tr.clickable {
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------------- autocomplete */
+.ac {
+  position: relative;
+}
+.ac-list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  margin-top: 2px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  max-height: 280px;
+  overflow-y: auto;
+  z-index: 30;
+}
+.ac-item {
+  padding: 5px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+.ac-item.sel,
+.ac-item:hover {
+  background: var(--blue-light);
+}
+.ac-item .name {
+  font-family: var(--mono);
+  font-weight: 600;
+}
+.ac-item .desc {
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------- lists */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+.list li {
+  padding: 5px 0;
+  border-bottom: 1px solid #f0f0f0;
+  overflow-wrap: anywhere;
+}
+.list li:last-child {
+  border-bottom: none;
+}
+.rel-arrow {
+  color: var(--muted);
+  padding: 0 4px;
+}
+
+details.collapsible > summary {
+  cursor: pointer;
+  color: var(--blue);
+  font-size: 12px;
+  padding: 4px 0;
+}
+pre.code {
+  background: #f7f7f7;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 4px 0;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+/* ---------------------------------------------------------------- SQL editor */
+.editor {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+.editor .cm-editor {
+  min-height: 140px;
+  max-height: 360px;
+  font-size: 12.5px;
+}
+.editor .cm-editor.cm-focused {
+  outline: none;
+}
+.editor .cm-scroller {
+  font-family: var(--mono);
+}
+.cm-tooltip.x3i-hover {
+  padding: 6px 8px;
+  font-size: 12px;
+  max-width: 280px;
+  border-radius: 6px;
+}
+.x3i-hover .t {
+  font-family: var(--mono);
+  font-weight: 700;
+}
+
+.spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--blue-light);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: -2px;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* X3QL suggestions (Salesforce Inspector style) */
+.chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; max-height: 180px; overflow-y: auto; }
+.chip { border: 1px solid var(--blue); color: var(--blue); background: #fff; border-radius: 12px; padding: 2px 8px; font-size: 12px; cursor: pointer; display: inline-flex; gap: 4px; align-items: center; }
+.chip:hover { background: var(--blue-light); }
+.chip-code { font-family: Consolas, monospace; font-size: 10px; color: #5c5c5c; }
+.cm-x3-hover { padding: 4px 8px; font-size: 12px; max-width: 320px; }
+.help-table td { vertical-align: top; }
+.help h4 { margin: 10px 0 4px; color: var(--navy); }
+.chip.kw { border-color: var(--navy); color: var(--navy); font-weight: 600; }
+.cm-tooltip-autocomplete { font-size: 12px; }

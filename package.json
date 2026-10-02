@@ -1,0 +1,28 @@
+{
+  "name": "x3-inspector",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "X3 Inspector: Sage X3 diagnostic assistant for Chrome (side panel) with a local read-only companion service",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "npm run build -w @x3i/extension",
+    "dev:extension": "npm run dev -w @x3i/extension",
+    "companion": "npm run start -w @x3i/companion",
+    "companion:dev": "npm run dev -w @x3i/companion"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}

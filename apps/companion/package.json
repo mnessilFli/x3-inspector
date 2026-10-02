@@ -1,0 +1,23 @@
+{
+  "name": "@x3i/companion",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "X3 Inspector Companion: local read-only API between the Chrome extension and the Sage X3 database",
+  "scripts": {
+    "start": "tsx src/main.ts",
+    "dev": "tsx watch src/main.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@x3i/shared": "0.1.0",
+    "@x3i/x3-core": "0.1.0",
+    "mssql": "^12.7.2",
+    "oracledb": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/mssql": "^12.3.0",
+    "@types/oracledb": "^7.0.3",
+    "tsx": "^4.23.15"
+  }
+}

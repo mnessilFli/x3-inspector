@@ -1,0 +1,13 @@
+{
+  "name": "@x3i/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared types: API contract, provenance/confidence, environments, metadata and page models",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}

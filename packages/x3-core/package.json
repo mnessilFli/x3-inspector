@@ -1,0 +1,16 @@
+{
+  "name": "@x3i/x3-core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Pure X3 Inspector logic: SQL tokenizer and read-only validation, X3 conventions, metadata provider over abstract sources, page rules",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@x3i/shared": "0.1.0"
+  }
+}

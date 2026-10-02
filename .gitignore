@@ -1,0 +1,24 @@
+node_modules/
+dist/
+coverage/
+*.log
+logs/
+
+# Companion secrets and local config (never commit)
+apps/companion/config/companion.config.json
+apps/companion/config/.companion-token
+apps/companion/.env
+.env
+.env.*
+!.env.example
+.x3/
+*.pem
+*.key
+*.pfx
+
+# Local x3-context retrieves may contain customer metadata; commit deliberately if wanted
+/x3-context/
+
+.DS_Store
+Thumbs.db
+/captures/
